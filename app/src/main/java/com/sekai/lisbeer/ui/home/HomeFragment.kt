@@ -9,9 +9,9 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.sekai.lisbeer.databinding.FragmentHomeBinding
 import com.sekai.lisbeer.ui.home.adapter.AdapterBeers
+import com.sekai.lisbeer.ui.home.adapter.AdapterFoods
 
 class HomeFragment : Fragment() {
 
@@ -46,11 +46,12 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        initList()
+        initListBeer()
+        initListFood()
 
     }
 
-    private fun initList() {
+    private fun initListBeer() {
 //        activity
 
         val adapterBeers = AdapterBeers()
@@ -62,6 +63,14 @@ class HomeFragment : Fragment() {
             }
 
 
+
+    }
+
+    private fun initListFood(){
+        binding.rvListFoods.apply {
+//                layoutManager = LinearLayoutManager(activity)
+            adapter = AdapterFoods()
+        }
 
     }
 

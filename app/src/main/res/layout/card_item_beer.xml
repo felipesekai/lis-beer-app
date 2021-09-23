@@ -3,20 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp">
+   >
 
     <TextView
         android:id="@+id/txt_item_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:fontFamily="monospace"
         android:text="beer exemple"
-        android:textSize="16sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardView" />
+        app:layout_constraintTop_toBottomOf="@id/cardView"
+        style="@style/card_name_title" />
 
 
     <TextView
@@ -37,6 +33,7 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="25dp"
         app:cardElevation="5dp"
+        android:layout_margin="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
