@@ -9,6 +9,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.sekai.lisbeer.databinding.ActivityMainBinding
+import com.sekai.lisbeer.databinding.FragmentHomeBinding
+import com.sekai.lisbeer.ui.home.Teste
+import com.sekai.lisbeer.ui.home.adapter.AdapterBeers
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        Teste.setContext(this)
     }
 
     private fun initToolbar() {
@@ -39,6 +43,9 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
     }
+
+
+
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
