@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.sekai.lisbeer.databinding.FragmentHomeBinding
 import com.sekai.lisbeer.ui.home.adapter.AdapterBeers
 
@@ -38,21 +39,30 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
-        val adapterBeers = activity?.let { AdapterBeers(it) }
-        binding.rvListBeers.adapter = adapterBeers
-//        initList()
+
+
         return root
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onResume() {
+        super.onResume()
+        initList()
+
     }
 
     private fun initList() {
 //        activity
 
-        val adapterBeers = AdapterBeers(Teste.getContext()!!)
-        binding.rvListBeers.adapter = adapterBeers
+        val adapterBeers = AdapterBeers()
+
+
+           binding.rvListBeers.apply {
+//                layoutManager = LinearLayoutManager(activity)
+                adapter = adapterBeers
+            }
+
+
+
     }
 
     override fun onAttach(context: Context) {

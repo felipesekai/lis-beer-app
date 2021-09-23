@@ -9,14 +9,14 @@
         android:id="@+id/txt_item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="beer exemple"
-        android:fontFamily="monospace"
-        android:textStyle="bold"
-        android:textSize="16sp"
         android:layout_marginTop="8dp"
-        android:layout_marginStart="8dp"
+        android:fontFamily="monospace"
+        android:text="beer exemple"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardView"/>
+        app:layout_constraintTop_toBottomOf="@id/cardView" />
 
 
     <TextView
@@ -24,9 +24,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:fontFamily="casual"
         android:layout_marginTop="4dp"
+        android:fontFamily="sans-serif"
         android:text="5.0"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/txt_item_name"
         app:layout_constraintTop_toBottomOf="@+id/txt_item_name" />
 
@@ -42,13 +43,13 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_item_beer"
-            android:layout_width="145dp"
-            android:layout_height="145dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_margin="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic__1sjraw3lhl__ac_sl1000_" />
+            app:srcCompat="@drawable/outline_sports_bar_24" />
 
 
     </androidx.cardview.widget.CardView>

@@ -1,18 +1,16 @@
 package com.sekai.lisbeer.ui.home.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.sekai.lisbeer.R
 import com.sekai.lisbeer.databinding.CardItemBeerBinding
 
-class AdapterBeers(val context: Context) : RecyclerView.Adapter<AdapterBeers.ViewHolder>(){
-    val list = mutableListOf<String>("hainoken", "budweiser","Stella")
+class AdapterBeers() : RecyclerView.Adapter<AdapterBeers.ViewHolder>(){
+    val list = mutableListOf<String>("heineken", "budweiser","Stella")
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
@@ -28,7 +26,9 @@ class AdapterBeers(val context: Context) : RecyclerView.Adapter<AdapterBeers.Vie
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = CardItemBeerBinding.inflate(LayoutInflater.from(context) ,parent, false)
+
+        val inflate = LayoutInflater.from(parent.context)
+        val binding = CardItemBeerBinding.inflate(inflate ,parent, false)
         return ViewHolder(binding.root)
     }
 
