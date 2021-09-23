@@ -1,15 +1,21 @@
 package com.sekai.lisbeer
 
+import android.content.Context
 import android.os.Bundle
 import android.view.Menu
+import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.sekai.lisbeer.api.lisbeerapi.MyRetrofit
 import com.sekai.lisbeer.databinding.ActivityMainBinding
-import com.sekai.lisbeer.ui.home.varOrFun
+import com.sekai.lisbeer.ui.home.varOrFun.setList
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,7 +39,8 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
+        val list : ArrayList<Product> = getData() as ArrayList<Product>
+        setList(list)
 
 
     }
@@ -43,6 +50,25 @@ class MainActivity : AppCompatActivity() {
         val toolbar = binding.includeToolbar.root
         setSupportActionBar(toolbar)
 
+    }
+
+    private fun getData(): List<Product> {
+        var list = arrayListOf<Product>()
+
+        val call : Call<List<Product>> =
+            MyRetrofit.instance?.LisbeerApi()?.getProductApi() as Call<List<Product>>
+
+        call.enqueue(object : Callback<List<Product>> {
+            override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
+                list.addAll(response.body()?.toList() as ArrayList<Product>)
+            }
+
+            override fun onFailure(call: Call<List<Product>>, t: Throwable) {
+                Toast.makeText(this@MainActivity, t.message, Toast.LENGTH_SHORT).show()
+            }
+
+        })
+        return list
     }
 
 

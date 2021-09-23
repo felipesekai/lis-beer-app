@@ -67,9 +67,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun initListFood(){
+       var adapterFoods  = context?.let { AdapterFoods(it) }
+        adapterFoods!!.updateList()
         binding.rvListFoods.apply {
-//                layoutManager = LinearLayoutManager(activity)
-            adapter = AdapterFoods()
+
+            adapter = adapterFoods
         }
 
     }
