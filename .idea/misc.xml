@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/android/lisbeer/app/src/main/res/font-v26/font.xml" value="0.13072916666666667" />
+        <entry key="..\:/android/lisbeer/app/src/main/res/font/font.xml" value="0.23958333333333334" />
+        <entry key="..\:/android/lisbeer/app/src/main/res/font/poppins.xml" value="0.13072916666666667" />
         <entry key="..\:/android/lisbeer/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/android/lisbeer/app/src/main/res/layout/card_item_beer.xml" value="0.33" />
         <entry key="..\:/android/lisbeer/app/src/main/res/layout/card_itens_foods.xml" value="0.209375" />
