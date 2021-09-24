@@ -11,7 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sekai.lisbeer.Product
 import com.sekai.lisbeer.R
-import com.sekai.lisbeer.databinding.CardItensFoodsBinding
+import com.sekai.lisbeer.databinding.CardItensCategoryBinding
+
 
 class AdapterCategory (val context: Context) : RecyclerView.Adapter<AdapterCategory.ViewHolder>(){
    private var list : ArrayList<Product> = arrayListOf()
@@ -33,7 +34,7 @@ class AdapterCategory (val context: Context) : RecyclerView.Adapter<AdapterCateg
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         val inflate = LayoutInflater.from(parent.context)
-        val binding = CardItensFoodsBinding.inflate(inflate ,parent, false)
+        val binding = CardItensCategoryBinding.inflate(inflate ,parent, false)
         return ViewHolder(binding.root)
     }
 

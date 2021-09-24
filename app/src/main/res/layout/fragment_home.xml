@@ -38,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rv_list_beers"
-        tools:listitem="@layout/card_itens_foods" />
+        tools:listitem="@layout/card_itens_category" />
 
     <TextView
         android:id="@+id/text_home"
