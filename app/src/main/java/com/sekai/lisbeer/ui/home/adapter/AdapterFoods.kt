@@ -16,7 +16,7 @@ import com.sekai.lisbeer.databinding.CardItensFoodsBinding
 import com.sekai.lisbeer.ui.home.varOrFun.getList
 
 class AdapterFoods (val context: Context) : RecyclerView.Adapter<AdapterFoods.ViewHolder>(){
-   private var list : List<Product> = mutableListOf()
+   private var list : ArrayList<Product> = arrayListOf()
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -49,9 +49,9 @@ class AdapterFoods (val context: Context) : RecyclerView.Adapter<AdapterFoods.Vi
     override fun getItemCount(): Int = list.size
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateList(){
-
-        list = getList()
+    fun updateList(lista: ArrayList<Product>){
+        list.clear()
+        list.addAll(lista)
         notifyDataSetChanged()
     }
 

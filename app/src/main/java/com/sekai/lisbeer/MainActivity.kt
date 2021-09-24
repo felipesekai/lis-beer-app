@@ -2,6 +2,7 @@ package com.sekai.lisbeer
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -12,6 +13,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.sekai.lisbeer.api.lisbeerapi.MyRetrofit
 import com.sekai.lisbeer.databinding.ActivityMainBinding
+import com.sekai.lisbeer.ui.home.HomeViewModel.Companion.TAG
 import com.sekai.lisbeer.ui.home.varOrFun.setList
 import retrofit2.Call
 import retrofit2.Callback
@@ -39,8 +41,8 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-        val list : ArrayList<Product> = getData() as ArrayList<Product>
-        setList(list)
+//        val list : ArrayList<Product> = getData() as ArrayList<Product>
+//        setList(list)
 
 
     }
@@ -56,7 +58,8 @@ class MainActivity : AppCompatActivity() {
         var list = arrayListOf<Product>()
 
         val call : Call<List<Product>> =
-            MyRetrofit.instance?.LisbeerApi()?.getProductApi() as Call<List<Product>>
+            MyRetrofit.instance?.LisbeerApi()?.getProductApi()?.execute() as Call<List<Product>>
+
 
         call.enqueue(object : Callback<List<Product>> {
             override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {

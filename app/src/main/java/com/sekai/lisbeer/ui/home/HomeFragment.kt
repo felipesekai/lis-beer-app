@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.sekai.lisbeer.Product
 import com.sekai.lisbeer.databinding.FragmentHomeBinding
 import com.sekai.lisbeer.ui.home.adapter.AdapterBeers
 import com.sekai.lisbeer.ui.home.adapter.AdapterFoods
@@ -67,11 +68,17 @@ class HomeFragment : Fragment() {
     }
 
     private fun initListFood(){
-       var adapterFoods  = context?.let { AdapterFoods(it) }
-        adapterFoods!!.updateList()
-        binding.rvListFoods.apply {
+        val adapterFoods  = context?.let { AdapterFoods(it) }
 
-            adapter = adapterFoods
+        homeViewModel.init()
+        homeViewModel.lista.observe(this, { lista->
+            if (lista.isNotEmpty()){
+                adapterFoods!!.updateList(lista as ArrayList<Product>)
+            }
+        })
+
+        binding.rvListFoods.apply {
+                adapter = adapterFoods
         }
 
     }
