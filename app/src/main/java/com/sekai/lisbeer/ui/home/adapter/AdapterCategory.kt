@@ -11,11 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sekai.lisbeer.Product
 import com.sekai.lisbeer.R
-import com.sekai.lisbeer.databinding.CardItemBeerBinding
 import com.sekai.lisbeer.databinding.CardItensFoodsBinding
-import com.sekai.lisbeer.ui.home.varOrFun.getList
 
-class AdapterFoods (val context: Context) : RecyclerView.Adapter<AdapterFoods.ViewHolder>(){
+class AdapterCategory (val context: Context) : RecyclerView.Adapter<AdapterCategory.ViewHolder>(){
    private var list : ArrayList<Product> = arrayListOf()
 
 

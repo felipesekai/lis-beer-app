@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.sekai.lisbeer.Product
 import com.sekai.lisbeer.databinding.FragmentHomeBinding
 import com.sekai.lisbeer.ui.home.adapter.AdapterBeers
-import com.sekai.lisbeer.ui.home.adapter.AdapterFoods
+import com.sekai.lisbeer.ui.home.adapter.AdapterCategory
 
 class HomeFragment : Fragment() {
 
@@ -41,6 +41,7 @@ class HomeFragment : Fragment() {
             textView.text = it
         })
 
+        loading(true)
 
         return root
     }
@@ -48,7 +49,7 @@ class HomeFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         initListBeer()
-        initListFood()
+        initListCategory()
 
     }
 
@@ -67,12 +68,13 @@ class HomeFragment : Fragment() {
 
     }
 
-    private fun initListFood(){
-        val adapterFoods  = context?.let { AdapterFoods(it) }
+    private fun initListCategory(){
+        val adapterFoods  = context?.let { AdapterCategory(it) }
 
         homeViewModel.init()
         homeViewModel.lista.observe(this, { lista->
             if (lista.isNotEmpty()){
+                loading(false)
                 adapterFoods!!.updateList(lista as ArrayList<Product>)
             }
         })
@@ -81,6 +83,12 @@ class HomeFragment : Fragment() {
                 adapter = adapterFoods
         }
 
+    }
+
+    private fun loading(isLoading: Boolean){
+        binding.progressbarCircular.apply {
+            visibility = if (isLoading) View.VISIBLE else View.GONE
+        }
     }
 
     override fun onAttach(context: Context) {
