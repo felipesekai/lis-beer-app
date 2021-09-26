@@ -28,23 +28,21 @@
         app:srcCompat="@android:mipmap/sym_def_app_icon" />
 
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_iselected_IA"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="40dp"
-        app:cardElevation="5dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cslayout_iselected_IA"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_item_IA">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/item_title"
+                android:id="@+id/item_name_IA"
                 style="@style/name_title"
                 android:layout_marginTop="24dp"
                 android:text="Item Name Example"
@@ -55,22 +53,22 @@
                 />
 
             <TextView
-                android:id="@+id/item_from"
+                android:id="@+id/item_from_IA"
                 style="@style/name_from"
                 android:layout_marginTop="4dp"
                 android:text="From local"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/item_title" />
+                app:layout_constraintTop_toBottomOf="@id/item_name_IA" />
 
             <TextView
-                android:id="@+id/item_distance"
+                android:id="@+id/item_distance_IA"
                 style="@style/itens_descriptions"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:text="From local"
+                android:text="Distance"
                 app:layout_constraintEnd_toStartOf="@+id/view"
-                app:layout_constraintTop_toBottomOf="@id/item_from" />
+                app:layout_constraintTop_toBottomOf="@id/item_from_IA" />
 
             <view
                 android:id="@+id/view"
@@ -79,10 +77,10 @@
                 android:layout_height="0dp"
                 android:background="#9C9B9B"
                 android:backgroundTint="@color/black"
-                app:layout_constraintBottom_toBottomOf="@id/item_distance"
+                app:layout_constraintBottom_toBottomOf="@id/item_distance_IA"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/item_distance"
+                app:layout_constraintTop_toTopOf="@id/item_distance_IA"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageView
@@ -90,28 +88,28 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginStart="8dp"
-                app:layout_constraintBottom_toBottomOf="@+id/item_stars"
-                app:layout_constraintEnd_toStartOf="@+id/item_stars"
+                app:layout_constraintBottom_toBottomOf="@+id/item_stars_IA"
+                app:layout_constraintEnd_toStartOf="@+id/item_stars_IA"
                 app:layout_constraintStart_toEndOf="@+id/view"
-                app:layout_constraintTop_toTopOf="@+id/item_stars"
+                app:layout_constraintTop_toTopOf="@+id/item_stars_IA"
                 app:srcCompat="@android:drawable/btn_star" />
 
             <TextView
-                android:id="@+id/item_stars"
+                android:id="@+id/item_stars_IA"
                 style="@style/itens_descriptions"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="stars"
                 app:layout_constraintStart_toEndOf="@+id/img_star"
-                app:layout_constraintTop_toBottomOf="@id/item_from" />
+                app:layout_constraintTop_toBottomOf="@id/item_from_IA" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/item_quantidade"
+                android:id="@+id/card_item_quantidade"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="16dp"
                 app:cardBackgroundColor="@android:color/darker_gray"
                 app:cardCornerRadius="25dp"
                 app:cardElevation="4dp"
@@ -125,16 +123,16 @@
                     android:padding="16dp">
 
                     <TextView
-                        android:id="@+id/title_quantidade"
+                        android:id="@+id/title_quantidade_IA"
                         style="@style/itens_descriptions"
                         android:text="Quantidade (1)"
-                        android:textSize="18sp"
+                        android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
-                        android:id="@+id/btn_minus"
+                        android:id="@+id/btn_minus_IA"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_marginStart="16dp"
@@ -152,11 +150,11 @@
                         android:layout_marginTop="8dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/title_quantidade"
+                        app:layout_constraintTop_toBottomOf="@+id/title_quantidade_IA"
                         app:srcCompat="@drawable/outline_sports_bar_24" />
 
                     <ImageView
-                        android:id="@+id/btn_plus"
+                        android:id="@+id/btn_plus_IA"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_marginEnd="16dp"
@@ -168,11 +166,27 @@
 
             </androidx.cardview.widget.CardView>
 
+        <TextView
+            android:id="@+id/txt_locale_IA"
+            style="@style/itens_descriptions"
+            android:text="Locais"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_item_quantidade" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_list_locals_IA"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@id/txt_locale_IA"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-    </androidx.cardview.widget.CardView>
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
