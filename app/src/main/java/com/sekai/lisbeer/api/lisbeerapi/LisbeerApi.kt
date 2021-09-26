@@ -1,6 +1,6 @@
 package com.sekai.lisbeer.api.lisbeerapi
 
-import com.sekai.lisbeer.Product
+import com.sekai.lisbeer.model.Product
 import retrofit2.Call
 import retrofit2.http.GET
 

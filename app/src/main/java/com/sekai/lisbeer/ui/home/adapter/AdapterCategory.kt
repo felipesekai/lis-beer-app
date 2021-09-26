@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.sekai.lisbeer.Product
+import com.sekai.lisbeer.model.Product
 import com.sekai.lisbeer.R
 import com.sekai.lisbeer.databinding.CardItensCategoryBinding
 

@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.sekai.lisbeer.Product
+import com.sekai.lisbeer.model.Product
 import com.sekai.lisbeer.databinding.FragmentHomeBinding
 import com.sekai.lisbeer.ui.home.adapter.AdapterBeers
 import com.sekai.lisbeer.ui.home.adapter.AdapterCategory

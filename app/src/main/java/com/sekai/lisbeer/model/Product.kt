@@ -1,4 +1,4 @@
-package com.sekai.lisbeer
+package com.sekai.lisbeer.model
 
 import com.google.gson.annotations.SerializedName
 

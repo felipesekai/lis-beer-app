@@ -1,6 +1,6 @@
 package com.sekai.lisbeer.data
 
-import com.sekai.lisbeer.Product
+import com.sekai.lisbeer.model.Product
 
 interface LisbeerDataSource {
 

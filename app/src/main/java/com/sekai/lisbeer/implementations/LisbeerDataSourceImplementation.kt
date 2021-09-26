@@ -1,7 +1,7 @@
 package com.sekai.lisbeer.implementations
 
 import android.util.Log
-import com.sekai.lisbeer.Product
+import com.sekai.lisbeer.model.Product
 import com.sekai.lisbeer.api.lisbeerapi.MyRetrofit
 import com.sekai.lisbeer.data.LisbeerDataSource
 

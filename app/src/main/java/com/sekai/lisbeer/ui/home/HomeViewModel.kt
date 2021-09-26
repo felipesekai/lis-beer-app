@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.sekai.lisbeer.Product
+import com.sekai.lisbeer.model.Product
 import com.sekai.lisbeer.api.lisbeerapi.MyRetrofit
 import com.sekai.lisbeer.data.Repository
 import com.sekai.lisbeer.implementations.LisbeerDataSourceImplementation
