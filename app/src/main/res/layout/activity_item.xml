@@ -83,16 +83,16 @@
                 app:layout_constraintTop_toTopOf="@id/item_distance_IA"
                 tools:ignore="SpeakableTextPresentCheck" />
 
-            <ImageView
-                android:id="@+id/img_star"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="8dp"
-                app:layout_constraintBottom_toBottomOf="@+id/item_stars_IA"
-                app:layout_constraintEnd_toStartOf="@+id/item_stars_IA"
-                app:layout_constraintStart_toEndOf="@+id/view"
-                app:layout_constraintTop_toTopOf="@+id/item_stars_IA"
-                app:srcCompat="@android:drawable/btn_star" />
+        <ImageView
+            android:id="@+id/img_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/item_stars_IA"
+            app:layout_constraintEnd_toStartOf="@+id/item_stars_IA"
+            app:layout_constraintStart_toEndOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/item_stars_IA"
+            app:srcCompat="@drawable/ic_outline_star_border_black_18" />
 
             <TextView
                 android:id="@+id/item_stars_IA"
@@ -136,8 +136,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_marginStart="16dp"
+                        android:clickable="true"
                         android:contentDescription="botao menos"
-                        android:src="@drawable/ic_outline_minimize_24"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"

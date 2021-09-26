@@ -1,27 +1,39 @@
 package com.sekai.lisbeer.ui.home.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.sekai.lisbeer.R
 import com.sekai.lisbeer.databinding.CardItemBeerBinding
+import com.sekai.lisbeer.model.Beer
 
-class AdapterBeers() : RecyclerView.Adapter<AdapterBeers.ViewHolder>(){
-    val list = mutableListOf<String>("heineken", "budweiser","Stella")
+class AdapterBeers(/*context : Context */) : RecyclerView.Adapter<AdapterBeers.ViewHolder>(){
+    private val list = mutableListOf<String>("heineken", "budweiser","Stella")
+    private var listBeers = mutableListOf<Beer>()
+    val oneClick : (String)->Unit ={}
 
-
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
 
         val name = itemView.findViewById<TextView>(R.id.txt_item_name)
         val evaluation = itemView.findViewById<TextView>(R.id.txt_evaluation)
         val img : ImageView = itemView.findViewById(R.id.iv_item_beer)
+        val card = itemView.findViewById<CardView>(R.id.cardView_beer)
 
-        fun bind(s: String) {
+        fun bind(s: String,/*item : Beer */) {
             name.text = s
+//            name.text = item.name
+//            evaluation.text = item.evaluation
+//            Glide.with(context).load(item.img).into(img)
+            card.setOnClickListener{
+                oneClick(s)
+            }
         }
 
     }
@@ -39,5 +51,11 @@ class AdapterBeers() : RecyclerView.Adapter<AdapterBeers.ViewHolder>(){
 
     override fun getItemCount(): Int = list.size
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateList(lista: MutableList<Beer>){
+            listBeers.clear()
+            listBeers = lista
+            notifyDataSetChanged()
+    }
 
 }
