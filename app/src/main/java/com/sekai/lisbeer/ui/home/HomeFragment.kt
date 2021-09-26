@@ -1,6 +1,8 @@
 package com.sekai.lisbeer.ui.home
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +15,7 @@ import com.sekai.lisbeer.model.Product
 import com.sekai.lisbeer.databinding.FragmentHomeBinding
 import com.sekai.lisbeer.ui.home.adapter.AdapterBeers
 import com.sekai.lisbeer.ui.home.adapter.AdapterCategory
+import com.sekai.lisbeer.ui.item.ItemActivity
 
 class HomeFragment : Fragment() {
 
@@ -69,18 +72,21 @@ class HomeFragment : Fragment() {
     }
 
     private fun initListCategory(){
-        val adapterFoods  = context?.let { AdapterCategory(it) }
+        val adapterCategory  = context?.let { AdapterCategory(it) }
+        adapterCategory?.clickListener = {
+            startActivity(Intent(activity,ItemActivity::class.java))
+        }
 
         homeViewModel.init()
         homeViewModel.lista.observe(this, { lista->
             if (lista.isNotEmpty()){
                 loading(false)
-                adapterFoods!!.updateList(lista as ArrayList<Product>)
+                adapterCategory!!.updateList(lista as ArrayList<Product>)
             }
         })
 
         binding.rvListFoods.apply {
-                adapter = adapterFoods
+                adapter = adapterCategory
         }
 
     }

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sekai.lisbeer.model.Product
@@ -16,17 +17,21 @@ import com.sekai.lisbeer.databinding.CardItensCategoryBinding
 
 class AdapterCategory (val context: Context) : RecyclerView.Adapter<AdapterCategory.ViewHolder>(){
    private var list : ArrayList<Product> = arrayListOf()
-
+    var clickListener: (Product) -> Unit = {}
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
 
         val title = itemView.findViewById<TextView>(R.id.txt_cif_item_title)
         val img : ImageView = itemView.findViewById(R.id.imgView_cif_img)
+        val card = itemView.findViewById<CardView>(R.id.cardView_itemCategory)
 
         fun bind(item : Product) {
             title.text = item.id
             Glide.with(context).load(item.imageurl).into(img)
+            card.setOnClickListener {
+                clickListener(item)
+            }
         }
 
     }
@@ -42,6 +47,8 @@ class AdapterCategory (val context: Context) : RecyclerView.Adapter<AdapterCateg
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         holder.bind(list[position])
+
+
 
     }
 

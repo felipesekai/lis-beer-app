@@ -12,6 +12,7 @@ import com.sekai.lisbeer.databinding.CardItemBeerBinding
 class AdapterBeers() : RecyclerView.Adapter<AdapterBeers.ViewHolder>(){
     val list = mutableListOf<String>("heineken", "budweiser","Stella")
 
+
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
 
