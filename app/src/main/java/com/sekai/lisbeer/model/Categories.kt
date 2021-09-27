@@ -2,20 +2,16 @@ package com.sekai.lisbeer.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
-
+import kotlinx.parcelize.Parcelize
+import java.util.*
 
 @Parcelize
-class Beer(
+class Categories(
     @SerializedName("id")
-    val id: Int,
+    val id: UUID?,
     @SerializedName("name")
     val name: String,
     @SerializedName("evaluation")
-    val evaluation: Double,
-    @SerializedName("price")
-    val price: Double,
-    @SerializedName(" photoUrl")
-    val img: String
-) : Parcelable{
+    val evaluation: Int = 0
+): Parcelable {
 }

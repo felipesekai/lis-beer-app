@@ -45,14 +45,15 @@ class HomeFragment : Fragment() {
         })
 
         loading(true)
+        initListBeer()
+        initListCategory()
 
         return root
     }
 
     override fun onResume() {
         super.onResume()
-        initListBeer()
-        initListCategory()
+
 
     }
 
