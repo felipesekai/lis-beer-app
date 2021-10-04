@@ -2,14 +2,12 @@ package com.sekai.lisbeer.ui.home
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.sekai.lisbeer.model.Product
 import com.sekai.lisbeer.databinding.FragmentHomeBinding
@@ -31,7 +29,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
 
@@ -40,7 +38,7 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
         val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
+        homeViewModel.text.observe(viewLifecycleOwner,  {
             textView.text = it
         })
 
@@ -49,12 +47,6 @@ class HomeFragment : Fragment() {
         initListCategory()
 
         return root
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-
     }
 
     private fun initListBeer() {
@@ -79,7 +71,7 @@ class HomeFragment : Fragment() {
         }
 
         homeViewModel.init()
-        homeViewModel.lista.observe(this, { lista->
+        homeViewModel.lista.observe(viewLifecycleOwner, { lista->
             if (lista.isNotEmpty()){
                 loading(false)
                 adapterCategory!!.updateList(lista as ArrayList<Product>)
