@@ -17,13 +17,7 @@ import org.junit.Assert.*
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class ExampleUnitTest {
-    val myRetrofit = MyRetrofit()
-    val dataSource =  LisbeerDataSourceImplementation(myRetrofit)
-    val repository = Repository(dataSource)
-    val produtcListCaseUse = ProductListUseCase(repository)
-    val lista : List<Product> = produtcListCaseUse.invoke() as ArrayList
-    val listaBeer : List<Beer> = produtcListCaseUse.invokeBeers()
-    val listaCategories : List<Categories> = produtcListCaseUse.invokeCategories()
+
 
     @Test
     fun addition_isCorrect() {
@@ -31,6 +25,11 @@ class ExampleUnitTest {
     }
     @Test
     fun getListaAPi(){
+        val myRetrofit = MyRetrofit()
+        val dataSource =  LisbeerDataSourceImplementation(myRetrofit)
+        val repository = Repository(dataSource)
+        val produtcListCaseUse = ProductListUseCase(repository)
+        val lista : List<Product> = produtcListCaseUse.invoke() as ArrayList
 
         val testelista = arrayListOf<Product>()
 
@@ -52,6 +51,11 @@ class ExampleUnitTest {
     }
     @Test
     fun getListaBeerAPi(){
+        val myRetrofit = MyRetrofit()
+        val dataSource =  LisbeerDataSourceImplementation(myRetrofit)
+        val repository = Repository(dataSource)
+        val produtcListCaseUse = ProductListUseCase(repository)
+        val listaBeer : List<Beer> = produtcListCaseUse.invokeBeers()
 
         val testelista = arrayListOf<Beer>()
         val lista2 : ArrayList<Beer> = ArrayList()
@@ -62,6 +66,12 @@ class ExampleUnitTest {
     }
     @Test
     fun getListaCategoriesAPi(){
+        val myRetrofit = MyRetrofit()
+        val dataSource =  LisbeerDataSourceImplementation(myRetrofit)
+        val repository = Repository(dataSource)
+        val produtcListCaseUse = ProductListUseCase(repository)
+
+        val listaCategories : List<Categories> = produtcListCaseUse.invokeCategories()
         val testelista = arrayListOf<Categories>()
         val lista2 : ArrayList<Categories> = ArrayList()
         lista2.addAll(listaCategories)
@@ -78,4 +88,29 @@ class ExampleUnitTest {
         assertEquals(lista2, listaCategories)
 
     }
+    @Test
+    fun searchBeers(){
+        val myRetrofit = MyRetrofit()
+        val dataSource =  LisbeerDataSourceImplementation(myRetrofit)
+        val repository = Repository(dataSource)
+        val produtcListCaseUse = ProductListUseCase(repository)
+        val listaCategories : List<Categories> = produtcListCaseUse.invokeCategories()
+        val testelista = arrayListOf<Categories>()
+        val lista2 : ArrayList<Categories> = ArrayList()
+        lista2.addAll(listaCategories)
+        listaCategories.forEach {
+            testelista.add(Categories(
+                0,
+                "",
+                0,
+            )
+            )
+        }
+        assertNotEquals(testelista, listaCategories)
+        assertEquals(testelista.size, listaCategories.size)
+        assertEquals(lista2, listaCategories)
+
+    }
+
+
 }
