@@ -66,6 +66,7 @@ class ExampleUnitTest {
     }
     @Test
     fun getListaCategoriesAPi(){
+
         val myRetrofit = MyRetrofit()
         val dataSource =  LisbeerDataSourceImplementation(myRetrofit)
         val repository = Repository(dataSource)
@@ -94,21 +95,23 @@ class ExampleUnitTest {
         val dataSource =  LisbeerDataSourceImplementation(myRetrofit)
         val repository = Repository(dataSource)
         val produtcListCaseUse = ProductListUseCase(repository)
-        val listaCategories : List<Categories> = produtcListCaseUse.invokeCategories()
-        val testelista = arrayListOf<Categories>()
-        val lista2 : ArrayList<Categories> = ArrayList()
-        lista2.addAll(listaCategories)
-        listaCategories.forEach {
-            testelista.add(Categories(
+        val lisBeers : List<Beer> = produtcListCaseUse.invokeBeers()
+        val testelista = arrayListOf<Beer>()
+        val lista2 : ArrayList<Beer> = ArrayList()
+        lista2.addAll(lisBeers)
+        lisBeers.forEach {
+            testelista.add(Beer(
                 0,
                 "",
-                0,
+                0.0,
+                12.0,
+                "1"
             )
             )
         }
-        assertNotEquals(testelista, listaCategories)
-        assertEquals(testelista.size, listaCategories.size)
-        assertEquals(lista2, listaCategories)
+        assertNotEquals(testelista, lisBeers)
+        assertEquals(testelista.size, lisBeers.size)
+        assertEquals(lista2, lisBeers)
 
     }
 
