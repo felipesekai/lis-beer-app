@@ -11,9 +11,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.sekai.lisbeer.model.Product
 import com.sekai.lisbeer.databinding.FragmentHomeBinding
+import com.sekai.lisbeer.model.Beer
 import com.sekai.lisbeer.ui.home.adapter.AdapterBeers
 import com.sekai.lisbeer.ui.home.adapter.AdapterCategory
 import com.sekai.lisbeer.ui.item.ItemActivity
+import com.sekai.lisbeer.ui.item.ItemActivity.Companion.EXTRA
 
 class HomeFragment : Fragment() {
 
@@ -51,8 +53,23 @@ class HomeFragment : Fragment() {
 
     private fun initListBeer() {
 //        activity
+        val beers = arrayListOf(
+            Beer(1,"Heiniken", 4.4,5.50,""),
+            Beer(3,"Budweiser", 4.5,5.60,""),
+            Beer(55,"Stella", 4.5,5.80,""),
+
+        )
 
         val adapterBeers = AdapterBeers()
+        adapterBeers.apply {
+            updateList(beers)
+            oneClick = {
+               val intent =  Intent(activity,ItemActivity::class.java)
+                intent.putExtra(EXTRA,it)
+                startActivity(intent)
+            }
+        }
+
 
 
            binding.rvListBeers.apply {

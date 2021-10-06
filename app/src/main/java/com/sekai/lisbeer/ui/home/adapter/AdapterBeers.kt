@@ -14,9 +14,9 @@ import com.sekai.lisbeer.databinding.CardItemBeerBinding
 import com.sekai.lisbeer.model.Beer
 
 class AdapterBeers(/*context : Context */) : RecyclerView.Adapter<AdapterBeers.ViewHolder>(){
-    private val list = mutableListOf<String>("heineken", "budweiser","Stella")
+//    private val list = mutableListOf<String>("heineken", "budweiser","Stella")
     private var listBeers = mutableListOf<Beer>()
-    val oneClick : (String)->Unit ={}
+    var oneClick : (Beer)->Unit ={}
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
@@ -26,13 +26,13 @@ class AdapterBeers(/*context : Context */) : RecyclerView.Adapter<AdapterBeers.V
         val img : ImageView = itemView.findViewById(R.id.iv_item_beer)
         val card = itemView.findViewById<CardView>(R.id.cardView_beer)
 
-        fun bind(s: String,/*item : Beer */) {
-            name.text = s
-//            name.text = item.name
-//            evaluation.text = item.evaluation
+        fun bind(item : Beer) {
+//            name.text = s
+            name.text = item.name
+            evaluation.text = item.evaluation.toString()
 //            Glide.with(context).load(item.img).into(img)
             card.setOnClickListener{
-                oneClick(s)
+                oneClick(item)
             }
         }
 
@@ -46,10 +46,10 @@ class AdapterBeers(/*context : Context */) : RecyclerView.Adapter<AdapterBeers.V
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-       holder.bind(list[position])
+       holder.bind(listBeers[position])
     }
 
-    override fun getItemCount(): Int = list.size
+    override fun getItemCount(): Int = listBeers.size
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateList(lista: MutableList<Beer>){

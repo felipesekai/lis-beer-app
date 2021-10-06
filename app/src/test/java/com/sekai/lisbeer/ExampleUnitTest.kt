@@ -104,7 +104,8 @@ class ExampleUnitTest {
         val produtcListCaseUse = ProductListUseCase(repository)
 
         val lisBeers: List<Beer> = produtcListCaseUse.invokeBeers()
-        val listFilter: ArrayList<Beer> = ArrayList()
+//        val listFilter: ArrayList<Beer> = ArrayList()
+        val listFilter = arrayListOf<Beer>()
         val nameSearch: String = "hei"
         if (nameSearch.isNotEmpty()) {
             listFilter.addAll(
