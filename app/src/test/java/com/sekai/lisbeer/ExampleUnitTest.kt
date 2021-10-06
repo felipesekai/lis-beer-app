@@ -23,25 +23,27 @@ class ExampleUnitTest {
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
     }
+
     @Test
-    fun getListaAPi(){
+    fun getListaAPi() {
         val myRetrofit = MyRetrofit()
-        val dataSource =  LisbeerDataSourceImplementation(myRetrofit)
+        val dataSource = LisbeerDataSourceImplementation(myRetrofit)
         val repository = Repository(dataSource)
         val produtcListCaseUse = ProductListUseCase(repository)
-        val lista : List<Product> = produtcListCaseUse.invoke() as ArrayList
+        val lista: List<Product> = produtcListCaseUse.invoke() as ArrayList
 
         val testelista = arrayListOf<Product>()
 
-        val lista2 : ArrayList<Product> = ArrayList()
+        val lista2: ArrayList<Product> = ArrayList()
         lista2.addAll(lista)
         lista.forEach {
-            testelista.add(Product(
-                "",
-                "",
-                "",
-                "",
-            )
+            testelista.add(
+                Product(
+                    "",
+                    "",
+                    "",
+                    "",
+                )
             )
         }
         assertNotEquals(testelista, lista)
@@ -49,39 +51,42 @@ class ExampleUnitTest {
         assertEquals(dataSource.getAllProducts().size, lista.size)
 
     }
+
     @Test
-    fun getListaBeerAPi(){
+    fun getListaBeerAPi() {
         val myRetrofit = MyRetrofit()
-        val dataSource =  LisbeerDataSourceImplementation(myRetrofit)
+        val dataSource = LisbeerDataSourceImplementation(myRetrofit)
         val repository = Repository(dataSource)
         val produtcListCaseUse = ProductListUseCase(repository)
-        val listaBeer : List<Beer> = produtcListCaseUse.invokeBeers()
+        val listaBeer: List<Beer> = produtcListCaseUse.invokeBeers()
 
         val testelista = arrayListOf<Beer>()
-        val lista2 : ArrayList<Beer> = ArrayList()
+        val lista2: ArrayList<Beer> = ArrayList()
         lista2.addAll(listaBeer)
         assertNotEquals(testelista, listaBeer)
         assertEquals(lista2, listaBeer)
 
     }
+
     @Test
-    fun getListaCategoriesAPi(){
+    fun getListaCategoriesAPi() {
 
         val myRetrofit = MyRetrofit()
-        val dataSource =  LisbeerDataSourceImplementation(myRetrofit)
+        val dataSource = LisbeerDataSourceImplementation(myRetrofit)
         val repository = Repository(dataSource)
         val produtcListCaseUse = ProductListUseCase(repository)
 
-        val listaCategories : List<Categories> = produtcListCaseUse.invokeCategories()
+        val listaCategories: List<Categories> = produtcListCaseUse.invokeCategories()
         val testelista = arrayListOf<Categories>()
-        val lista2 : ArrayList<Categories> = ArrayList()
+        val lista2: ArrayList<Categories> = ArrayList()
         lista2.addAll(listaCategories)
         listaCategories.forEach {
-            testelista.add(Categories(
-                0,
-                "",
-                0,
-            )
+            testelista.add(
+                Categories(
+                    0,
+                    "",
+                    0,
+                )
             )
         }
         assertNotEquals(testelista, listaCategories)
@@ -89,29 +94,29 @@ class ExampleUnitTest {
         assertEquals(lista2, listaCategories)
 
     }
+
     @Test
-    fun searchBeers(){
+    fun searchBeers() {
+        //
         val myRetrofit = MyRetrofit()
-        val dataSource =  LisbeerDataSourceImplementation(myRetrofit)
+        val dataSource = LisbeerDataSourceImplementation(myRetrofit)
         val repository = Repository(dataSource)
         val produtcListCaseUse = ProductListUseCase(repository)
-        val lisBeers : List<Beer> = produtcListCaseUse.invokeBeers()
-        val testelista = arrayListOf<Beer>()
-        val lista2 : ArrayList<Beer> = ArrayList()
-        lista2.addAll(lisBeers)
-        lisBeers.forEach {
-            testelista.add(Beer(
-                0,
-                "",
-                0.0,
-                12.0,
-                "1"
-            )
+
+        val lisBeers: List<Beer> = produtcListCaseUse.invokeBeers()
+        val listFilter: ArrayList<Beer> = ArrayList()
+        val nameSearch: String = "hei"
+        if (nameSearch.isNotEmpty()) {
+            listFilter.addAll(
+                lisBeers.filter {
+                    return@filter it.name.lowercase().contains(nameSearch) == true
+                }
             )
         }
-        assertNotEquals(testelista, lisBeers)
-        assertEquals(testelista.size, lisBeers.size)
-        assertEquals(lista2, lisBeers)
+
+
+        assertNotEquals(listFilter, arrayListOf<Beer>())
+
 
     }
 
